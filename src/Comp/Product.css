@@ -1,0 +1,24 @@
+.product{
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    overflow: hidden;
+}
+.pd-name{
+    color: #2B2B52;
+    font-weight: bold;
+}
+.pd-img{
+
+
+}
+.pd-btn{
+    background: goldenrod;
+    width: 150px;
+    height: 30px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    cursor: pointer;
+}

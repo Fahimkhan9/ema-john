@@ -1,11 +1,15 @@
 import React from 'react';
+import Header from './Comp/Header';
+import Shop from './Comp/Shop';
 
 
 function App() {
  
   return (
-    <div className="App">
-Hello world
+    <div>
+<Header/>
+<Shop/>
+
     </div>
   );
 }
