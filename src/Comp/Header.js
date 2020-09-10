@@ -1,15 +1,18 @@
 import React from 'react'
 import logo from '../images/logo.png'
 import './Header.css'
+import { NavLink } from 'react-router-dom'
 function Header() {
     return (
-        <div className="header">
-        <img src={logo} alt=""/>
-      <nav>
-          <a href="/shop">Shop</a>
-          <a href="/review">Order Review</a>
-          <a href="/manage">Manage Inventory</a>
-      </nav>
+        <div>
+            <div className="header__logo">
+            <img src={logo} className='logo' alt="" />
+            </div>
+            <nav>
+               <NavLink to="/shop">Shop</NavLink>
+               <NavLink to="/review">Order Review</NavLink>
+               <NavLink to="/manage">Manage Inventory</NavLink>
+            </nav>
         </div>
     )
 }

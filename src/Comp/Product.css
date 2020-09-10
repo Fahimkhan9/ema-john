@@ -6,15 +6,10 @@
     margin-right: 5px;
     overflow: hidden;
 }
-.pd-name{
-    color: #2B2B52;
-    font-weight: bold;
+.product__details{
+    flex-direction: column;
 }
-.pd-img{
-
-
-}
-.pd-btn{
+.product__button{
     background: goldenrod;
     width: 150px;
     height: 30px;

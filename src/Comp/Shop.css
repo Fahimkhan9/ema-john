@@ -1,10 +1,8 @@
-.shop-con{
+.shop{
     display: flex;
 }
+.products{
+    width: 80%;
+    border-right: 1px solid gray;
 
-.product-con{
-    width: 70%;
-    margin-left: 20px;
-    margin-right: 10px;
-    border-right: 1px solid lightgray;
 }

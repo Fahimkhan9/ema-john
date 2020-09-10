@@ -1,34 +1,22 @@
-.header img{
+.logo{
     height: 80px;
 }
-.header{
+.header__logo{
     text-align: center;
 }
-.header nav{
-    display: flex;
-    /* justify-content: start;
-    
-    align-items: center; */
-
+nav{
     background: #000;
-    line-height: 40px;
-    font-size: 20px;
+    padding: 20px;
 
-    
 }
-.header a{
+
+nav a{
     text-decoration: none;
     color: #fff;
-    margin: 0px 15px;
-    padding: 5px;
+    margin-right: 10px;
+    font-size: 20px;
+
 }
 nav a:hover{
-    background-color: gray;
-}
-
-@media only screen and (max-width:600px){
-    .header nav{
-        flex-direction: column;
-
-    }
+    background: lightgray;
 }

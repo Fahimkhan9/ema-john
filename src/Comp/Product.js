@@ -1,31 +1,26 @@
-import React from "react";
-import "./Product.css";
+import React from 'react'
+import './Product.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faShoppingCart } from '@fortawesome/free-solid-svg-icons'
-
+import {Link}  from 'react-router-dom'
 function Product(props) {
-//   console.log(props);
-  const { img, name, seller, price, stock } = props.product;
-  return (
-    <div className="product">
-      <div className="">
-        <img src={img} alt="" className='pd-img' />
-      </div>
-      <div className="">
-        <h4 className="pd-name">{name}</h4>
-        <br />
-        <p>
-          <small>by:{seller} </small>
-        </p>
-        <p>${price}</p>
-        <br />
-        <p>
-          <small>Only {stock} left in stock - Order soon </small>
-        </p>
-    <button className="pd-btn" onClick={() => props.handleAddPro(props.product)} ><FontAwesomeIcon icon={faShoppingCart}/>   Add to Cart  </button>
-      </div>
-    </div>
-  );
+    // console.log(props);
+    // const {name} = props.Product
+    const {name,img,seller,price,stock,product,key,quantity} = props.product
+    return (
+        <div className="product">
+            <img src={img} className='product__img' alt=""/>
+            <div className="product__details">
+    <h5><Link to={"/product/"+key}>{name}</Link></h5>
+            <br/>
+    <p><small>by {seller}</small></p>
+    <p><small>${price}</small></p>
+    <p><small>Only {stock} left in stock - order soon</small></p>
+{props.showAdd &&      <button  className="product__button" onClick={() =>props.handleAdd(props.product) } ><FontAwesomeIcon icon={faShoppingCart}/>Add to stock</button>}
+            </div>
+           
+        </div>
+    )
 }
 
-export default Product;
+export default Product
