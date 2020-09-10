@@ -2,7 +2,10 @@ import React from 'react'
 import logo from '../images/logo.png'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { UserContext } from '../App'
 function Header() {
+    const [loggedinUser, setLoggedinUser] = useContext(UserContext)
     return (
         <div>
             <div className="header__logo">
@@ -12,6 +15,7 @@ function Header() {
                <NavLink to="/shop">Shop</NavLink>
                <NavLink to="/review">Order Review</NavLink>
                <NavLink to="/manage">Manage Inventory</NavLink>
+    <button onClick={() => setLoggedinUser('')}>{loggedinUser && "singout"}</button>
             </nav>
         </div>
     )
