@@ -1,16 +1,23 @@
 import React,{useState} from 'react'
 import './Shop.css'
-import fakeData from "../fakeData"
+
 import Product from './Product';
 import Cart from './Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../utilities/databaseManager';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 function Shop() {
-    const f10 = fakeData.slice(0,10)
+  
    
-    const [product,setProduct] = useState(f10)
+    const [productArray,setProductArray] = useState([])
     const [cart,setCart] = useState([])
+
+
+useEffect(() => {
+    fetch("http://localhost:5000/products")
+    .then(res => res.json())
+    .then(data => setProductArray(data))
+},[])
 
     useEffect(() =>  {
 const savedCart = getDatabaseCart
@@ -18,16 +25,23 @@ const savedCart = getDatabaseCart
 console.log(savedCart);
 const productKeys = Object.keys(savedCart)
 console.log(productKeys);
-const previousCart = productKeys.map((existingkey) => {
-    const product = fakeData.find(pd => pd.key === existingkey )
-    console.log(product);
-    product.quantity = savedCart[existingkey]
-    console.log(product.quantity);
-    return product
+console.log(productArray);
+if(productArray.length){
+    const previousCart = productKeys.map((existingkey) => {
+    
+        const product = productArray.find(pd => pd.key === existingkey )
+        console.log(product);
+        product.quantity = savedCart[existingkey]
+        console.log(product.quantity);
+        return product
+    
+
 })
  setCart(previousCart)
-    },[])
+}
 
+    },[productArray])
+console.log(productArray);
 const handleAdd =(product) => {
     const toBeAddedKey = product.key
     const sameProduct = cart.find(pd  => pd.key === toBeAddedKey )
@@ -53,7 +67,7 @@ addToDatabaseCart(product.key,count)
     return (
         <div className="shop">
                 <div className="products">
-                    {f10.map((data) => {
+                    {productArray.map((data) => {
                         return <Product product={data} showAdd={true} handleAdd={handleAdd} key={data.key}  />
                     })}
                 </div>
