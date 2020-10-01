@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import {Link}  from 'react-router-dom'
 function Product(props) {
-    // console.log(props);
-    // const {name} = props.Product
+ 
     const {name,img,seller,price,stock,product,key,quantity} = props.product
     return (
         <div className="product">

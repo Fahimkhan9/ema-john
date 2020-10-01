@@ -7,7 +7,7 @@ function ProductDetail() {
     const {productkey}  = useParams()
     const [product,setProduct] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${productkey}`)
+        fetch(`https://rocky-castle-19322.herokuapp.com/product/${productkey}`)
         .then(res => res.json())
         .then(data => setProduct(data))
     },[productkey])
@@ -15,9 +15,7 @@ function ProductDetail() {
 
     return (
         <div>
-            <h1>{productkey}Coming soon</h1>
-            {/* <Product  showAddToCart ={false} product={Product}  />
-             */}
+         
              <Product product={product} showAdd={false}></Product>
         </div>
     ) 

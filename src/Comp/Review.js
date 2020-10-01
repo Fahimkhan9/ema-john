@@ -11,15 +11,12 @@ const [cart,setCart]  = useState([])
 const [orderPlaces,setOrderPlaced]  = useState(false)
 const history = useHistory()
 const plcaOrder =() => {
-    // console.log("ordered");
-    // setCart([])
-    // setOrderPlaced(true)
-    // processOrder()
+   
     history.push("/shipment")
 }
 
 const handleRemove = (productkey) => {
-console.log('removed',productkey);
+
 const newCart = cart.filter(pd => pd.key !== productkey)
 setCart(newCart)
 removeFromDatabaseCart(productkey)
@@ -29,7 +26,7 @@ useEffect(() => {
  const savedCart =  getDatabaseCart()
  const productKeys = Object.keys(savedCart)
 
-fetch('http://localhost:5000/getfewproductsbykeys',{
+fetch('https://rocky-castle-19322.herokuapp.com/getfewproductsbykeys',{
     method:"POST",
     headers:{"Content-Type": 'application/json'},
     body:JSON.stringify(productKeys)
@@ -39,7 +36,7 @@ fetch('http://localhost:5000/getfewproductsbykeys',{
 
 
 },[])
-console.log(cart);
+
 let thank 
 if(orderPlaces){
 thank =  <img src={haha} />
@@ -47,7 +44,7 @@ thank =  <img src={haha} />
     return (
         <div className="shop">
             <div className="products">
-            <h1>Cart items: {cart.length}</h1>
+     
             {
                 cart.map(pd => <ReviewItem  handleRemove={handleRemove} product={pd} /> )
             }

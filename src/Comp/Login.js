@@ -29,7 +29,7 @@ let { from } = location.state || { from: { pathname: "/" } };
   const signingoogle  = () => {
 auth.signInWithPopup(providerGoogle)
 .then(res => {
-  console.log(res)
+ 
 const {displayName,photoURL,email} = res.user
 const signedInUser = {
   isSignedIn: true,
@@ -39,8 +39,7 @@ const signedInUser = {
    
 }
 setUser(signedInUser)
-console.log(displayName);
-console.log(email);
+
 const newUserInfo = {...user}
 newUserInfo.err = ''
 newUserInfo.suc = true
@@ -70,8 +69,7 @@ history.replace(from);
 
 const handleSubmit = (e) => {
   e.preventDefault()
-  // console.log(user.email, user.password);
-  // create new user
+
 
 if (newUser && user.email && user.password) {
 auth.createUserWithEmailAndPassword(user.email,user.password)
@@ -82,7 +80,7 @@ auth.createUserWithEmailAndPassword(user.email,user.password)
     newUserInfo.suc = true
     setUser(newUserInfo)
     updateUserInfo(user.name)
-    console.log(res);
+    
   }
 )
 .catch(err => {
@@ -102,10 +100,10 @@ if(!newUser && user.email && user.password){
   newUserInfo.suc = true
   setUser(newUserInfo)
 setLoggedinUser(newUserInfo)
-  console.log(res.user);
+
 })
 .catch(err => {
-  console.log(err);
+ 
   const newUserInfo = {...user}
   newUserInfo.err =  err.message
   newUserInfo.suc = false
@@ -138,11 +136,9 @@ const updateUserInfo = (name) => {
     displayName: name,
     
   }).then(function() {
-    // Update successful.
-    console.log("updated success");
+
   }).catch(function(error) {
-    // An error happened.
-    console.log(error);
+   
   });
 }
 const fblogin  =( ) => {

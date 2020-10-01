@@ -13,7 +13,7 @@ import PrivateRoute from "./Comp/PrivateRoute";
 export const UserContext = createContext()
 function App() {
   const [loggedinUser,setLoggedinUser]  = useState()
-  console.log(loggedinUser);
+
   return (
     
       <UserContext.Provider value={[loggedinUser, setLoggedinUser]}>

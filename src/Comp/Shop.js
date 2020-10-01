@@ -14,7 +14,7 @@ function Shop() {
 
 
 useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://rocky-castle-19322.herokuapp.com/products")
     .then(res => res.json())
     .then(data => setProductArray(data))
 },[])
@@ -22,17 +22,16 @@ useEffect(() => {
     useEffect(() =>  {
 const savedCart = getDatabaseCart
 ()
-console.log(savedCart);
+
 const productKeys = Object.keys(savedCart)
-console.log(productKeys);
-console.log(productArray);
+;
 if(productArray.length){
     const previousCart = productKeys.map((existingkey) => {
     
         const product = productArray.find(pd => pd.key === existingkey )
-        console.log(product);
+       
         product.quantity = savedCart[existingkey]
-        console.log(product.quantity);
+       
         return product
     
 
@@ -41,7 +40,7 @@ if(productArray.length){
 }
 
     },[productArray])
-console.log(productArray);
+
 const handleAdd =(product) => {
     const toBeAddedKey = product.key
     const sameProduct = cart.find(pd  => pd.key === toBeAddedKey )

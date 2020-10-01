@@ -1,7 +1,7 @@
 import React from 'react'
 
 function ReviewItem(props) {
-    console.log(props);
+  
     const {name,quantity,key,price}  = props.product
     return (
         <div  style={{borderBottom: "1px  solid lightgray",padding: '15px',marginBottom: "15px"}}>

@@ -5,7 +5,7 @@ function Manage() {
 
 
     const addproduct =() => {
-        fetch("http://localhost:5000/addproduct",{
+        fetch("https://rocky-castle-19322.herokuapp.com/addproduct",{
             method:"POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(fakeData)

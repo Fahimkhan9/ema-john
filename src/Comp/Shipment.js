@@ -10,7 +10,7 @@ function Shipment() {
     const savedCart = getDatabaseCart()
     const orderDetails = {...loggedinUser,product:savedCart,shipement:data,orderTime: new Date()}
 
-    fetch("http://localhost:5000/addorder",{
+    fetch("https://rocky-castle-19322.herokuapp.com/addorder",{
       method:"POST",
       headers:{"Content-Type":'application/json'},
       body:JSON.stringify(orderDetails)
@@ -24,7 +24,7 @@ function Shipment() {
     })
   }
 const [loggedinUser,setLoggedinUser]  =  useContext(UserContext)
-  console.log(watch("example"));
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
