@@ -6,6 +6,7 @@ import Cart from './Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../utilities/databaseManager';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { CircularProgress } from '@material-ui/core';
 function Shop() {
   
    
@@ -17,6 +18,7 @@ useEffect(() => {
     fetch("https://rocky-castle-19322.herokuapp.com/products")
     .then(res => res.json())
     .then(data => setProductArray(data))
+    
 },[])
 
     useEffect(() =>  {
@@ -66,6 +68,9 @@ addToDatabaseCart(product.key,count)
     return (
         <div className="shop">
                 <div className="products">
+                    {
+                        productArray.length === 0 && <CircularProgress/>
+                    }
                     {productArray.map((data) => {
                         return <Product product={data} showAdd={true} handleAdd={handleAdd} key={data.key}  />
                     })}
