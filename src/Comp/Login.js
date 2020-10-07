@@ -45,6 +45,7 @@ newUserInfo.err = ''
 newUserInfo.suc = true
 setUser(newUserInfo)
 setLoggedinUser(res.user.email)
+setUserToken()
 history.replace(from);
 
 })
@@ -159,7 +160,13 @@ const fblogin  =( ) => {
     // ...
   });
 }
-
+const setUserToken =() => {
+auth.currentUser.getIdToken(true)
+.then(idtoken => {
+sessionStorage.setItem("token",idtoken)
+})
+.catch(err => alert(err))
+}
 
   return (
     <div className="App">

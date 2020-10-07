@@ -8,7 +8,7 @@ function PrivateRoute({children,...rest}) {
       <Route
       {...rest}
       render={({ location }) =>
-       loggedinUser ? (
+       (loggedinUser || sessionStorage.getItem('token')) ? (
           children
         ) : (
           <Redirect
