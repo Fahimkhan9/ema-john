@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { UserContext } from '../App';
@@ -7,9 +7,31 @@ import ProcessPayment from './ProcessPayment';
 
 function Shipment() {
     const { register, handleSubmit, watch, errors } = useForm();
+    
+const [loggedinUser,setLoggedinUser]  =  useContext(UserContext)
+const [shippingData,setShippingData] = useState(null)
+// const [pro,setPro] = useState([])
+// const [filter,setFilter] = useState('')
+
+// useEffect(() => {
+//   fetch(`http://localhost:5000/products?filter=${filter}`)
+//   .then(res => res.json())
+//   .then(data => setPro(data))
+  
+// },[filter])
+// console.log(pro);
   const onSubmit = data =>{
-    const savedCart = getDatabaseCart()
-    const orderDetails = {...loggedinUser,product:savedCart,shipement:data,orderTime: new Date()}
+  setShippingData(data)
+  }
+
+const handlePaymentSuccess = (paymentId) => {
+  const savedCart = getDatabaseCart()
+    const orderDetails = {
+      ...loggedinUser,
+      product:savedCart,
+      shipement:shippingData,
+      paymentId,
+      orderTime: new Date()}
 
     fetch("https://rocky-castle-19322.herokuapp.com/addorder",{
       method:"POST",
@@ -23,14 +45,16 @@ function Shipment() {
         processOrder()
       }
     })
-  }
-const [loggedinUser,setLoggedinUser]  =  useContext(UserContext)
+}
+// const handlesearch =(event) => {
+// setFilter(event.target.value)
+// }
 
     return (
       
         <div className="">
           <div className="row">
-            <div className="col-md-6">
+            <div style={{display: shippingData ? "none": 'block'}} className="col-md-6">
              <form onSubmit={handleSubmit(onSubmit)}>
        {/* register your input into the hook by invoking the "register" function */}
           <input name="example" defaultValue="test" ref={register} />
@@ -44,13 +68,22 @@ const [loggedinUser,setLoggedinUser]  =  useContext(UserContext)
 
          </form>
             </div>
-            <div className="col-md-6">
+            <div style={{display: shippingData ? "block": 'none'}} className="col-md-6">
               <p>Pay me</p>
-              <ProcessPayment/>
+              <ProcessPayment handlePaymentSuccess={handlePaymentSuccess}/>
             </div>
           </div>
+          {/* <input type="text" onBlur={handlesearch} className="form-control"/>
+          {
+            pro.map(data => (
+            <p key={data._id}>{data.name}</p>
+            ))
+          } */}
         </div>
     )
 }
 
 export default Shipment
+
+
+
