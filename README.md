@@ -1,3 +1,3 @@
 
 # ema-john
-This is super simple non-responsive e-coomerce landing
+This is super simple non-responsive e-commerce landing page
